@@ -13,7 +13,7 @@
     <nav class="navbar navbar-dark bg-primary">
       <div class="container">
         <a class="navbar-brand" href="#">Navbar</a>
-        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-info bg-light">Tweet</button>
+        <button id="new-tweet" class="btn btn-outline-info bg-light">Tweet</button>
       </div>
     </nav>
     <main class="container">
@@ -59,58 +59,7 @@
           </div>
         </section>
         <section id="timeline-content" class="col-lg-6 timeline-content">
-          <div class="tweet">
-            <div class="content">
-              <div class="tweet-header">
-                <a class="screen-name-link" href="/Diogo_a_Lendia">
-                  <strong>Diogo Soares</strong>
-                  <span class="username">@Diogo_a_Lendia</span>
-                </a>
-                <small class="time username">
-                  <span>9 hours ago</span>
-                </small>
-              </div>
-              <div class="tweet-body">
-                <p class="tweet-text">
-                  Meu tweet
-                </p>
-              </div>
-              
-              <div class="footer-actions" aria-label="Tweet actions">
-                <div class="footer-action comment">
-                  <button class="action-button action-comment" type="button">
-                    <div class="icon-container" title="Comment">
-                      <span class="icon far fa-comment"></span>
-                    </div>
-                    <span class="action-count">
-                      <span class="action-value">124</span>
-                    </span>
-                  </button>
-                </div>
-
-                <div class="footer-action reply">
-                  <button class="action-button action-retweet" type="button">
-                    <div class="icon-container" title="Retweet">
-                      <span class="icon fas fa-retweet"></span>
-                    </div>
-                    <span class="action-count">
-                      <span class="action-value">56</span>
-                    </span>
-                  </button>
-                </div>
-                <div class="footer-action like">
-                  <button class="action-button action-like" type="button">
-                    <div class="icon-container" title="Like">
-                      <span class="icon far fa-heart"></span>
-                    </div>
-                    <span class="action-count">
-                      <span class="action-value">102</span>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div> 
+          
         </section>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -133,22 +82,14 @@
         </div>
       </div>
     </main>
-    <script src="js/main.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="js/views/TweetView.js"></script>
+    <script src="js/controllers/TweetController.js"></script>
 
     <script type="text/javascript">
-      let url = "https://65f2497c034bdbecc7648b04.mockapi.io/api/v1/products";
-      let tweets = fetch(url);
-
-      tweets.then( (response) => {
-        console.log("response", response)
-        let json = response.json()
-        json.then((data) => {
-          console.log("data", data);
-        });
-      });
-      console.log("tweets", tweets);
-
+      new TweetController("#timeline-content", "#new-tweet", "#btn-criar-tweet");
     </script>
   </body>
 </html>
